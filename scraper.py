@@ -87,9 +87,13 @@ def main():
     r = post(URL, data=PARAMS, headers=HEADERS, timeout=120)
     course_codes = get_course_codes(r.json())
 
-    for i in course_codes:
-        print(get_pdf(course_codes[i]))
+    got_pdf = 0
 
+    for course in course_codes:
+        if get_pdf(course):
+            got_pdf += 1
+
+    print(f"Got {got_pdf} PDFs, from a total of {len(course_codes)} courses")
 
 if __name__ == "__main__":
     main()
