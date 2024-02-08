@@ -87,7 +87,7 @@ def main():
     r = post(URL, data=PARAMS, headers=HEADERS, timeout=120)
     course_codes = get_course_codes(r.json())
 
-    for i in range(10):
+    for i in course_codes:
         print(get_pdf(course_codes[i]))
 
 
